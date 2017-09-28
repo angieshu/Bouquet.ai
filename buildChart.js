@@ -54,13 +54,6 @@ function updateChart() {
 
 function buildChart(date) {
 	Highcharts.chart('container', {
-		color: {
-			linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-			stops: [
-				[0, '#003399'],
-				[1, '#3366AA']
-			]
-		},
 		chart: {
 			type: 'column'
 		},
