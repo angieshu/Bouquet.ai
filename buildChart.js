@@ -54,6 +54,13 @@ function updateChart() {
 
 function buildChart(date) {
 	Highcharts.chart('container', {
+		color: {
+			linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+			stops: [
+				[0, '#003399'],
+				[1, '#3366AA']
+			]
+		},
 		chart: {
 			type: 'column'
 		},
@@ -91,13 +98,7 @@ function buildChart(date) {
 		dataLabels: {
 			enabled: true,
 			rotation: -90,
-			color: {
-				linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-					stops: [
-						[0, '#003399'],
-						[1, '#3366AA']
-					]
-				},
+			color: '#FFFFFF',
 			align: 'right',
 			format: '{point.y:,.0f}', // one decimal
 			y: 10, // 10 pixels down from the top
