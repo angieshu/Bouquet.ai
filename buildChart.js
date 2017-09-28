@@ -95,7 +95,7 @@ function buildChart(date) {
 			enabled: false
 		},
 		tooltip: {
-			pointFormat: '<b>{point.y:,.0f} $</b>'
+			pointFormat: '<b>$ {point.y:,.0f}</b>'
 		},
 		series: [{
 			name: 'Total amount',
