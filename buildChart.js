@@ -1,6 +1,10 @@
 let data = {};
 let cleaned_data = {};
 
+
+/** Initializing a dictionary of dictionaries.
+	The key is in format 'YYYY-MM'.
+	The value of each key is a dictionary, that holds department names and their amounts. **/
 function dataInit() {
 	let year = 2016;
 	for (let month = 7; month != 6; month++) {
@@ -24,7 +28,12 @@ function loadInfo() {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			dataInit();
+
+			/** Parsing JSON to the object **/
 			let arr = JSON.parse(this.responseText);
+
+			/** Adding elements to the data dictionary.
+			 	Calculating the total sum amount by department **/
 			for (let i = 0; i < arr.length; i++) {
 				let key = arr[i].month_and_year.substring(0, 7);
 				if (arr[i].department in data[key]) {
@@ -33,6 +42,9 @@ function loadInfo() {
 					data[key][arr[i].department] = Number(arr[i].amount);
 				}
 			}
+
+			/** Converting values in data dictionary (which are dictionaries now)
+				to arrays to be able to pass it later to the chart. **/
 			for (let elem in data) {
 				let new_value = [];
 				for (let key in data[elem]) {
@@ -83,7 +95,7 @@ function buildChart(date) {
 			enabled: false
 		},
 		tooltip: {
-			pointFormat: '<b>{point.y:,.0f}</b>'
+			pointFormat: '<b>{point.y:,.0f} $</b>'
 		},
 		series: [{
 			name: 'Total amount',
@@ -93,8 +105,8 @@ function buildChart(date) {
 			rotation: -90,
 			color: '#FFFFFF',
 			align: 'right',
-			format: '{point.y:,.0f}', // one decimal
-			y: 10, // 10 pixels down from the top
+			format: '{point.y:,.0f}',
+			y: 10,
 			style: {
 				fontSize: '13px',
 				fontFamily: 'Verdana, sans-serif'
@@ -105,4 +117,3 @@ function buildChart(date) {
 }
 
 loadInfo();
-// updateChart();
