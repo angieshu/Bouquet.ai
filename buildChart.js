@@ -91,7 +91,13 @@ function buildChart(date) {
 		dataLabels: {
 			enabled: true,
 			rotation: -90,
-			color: '#FFFFFF',
+			color: {
+				linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+					stops: [
+						[0, '#003399'],
+						[1, '#3366AA']
+					]
+				},
 			align: 'right',
 			format: '{point.y:,.0f}', // one decimal
 			y: 10, // 10 pixels down from the top
