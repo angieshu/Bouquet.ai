@@ -43,7 +43,7 @@ function loadInfo() {
 				}
 			}
 
-			/** Converting values in data dictionary (which are dictionaries now)
+			/** Converting values from data dictionary (which are dictionaries now)
 				to arrays to be able to pass it later to the chart. **/
 			for (let elem in data) {
 				let new_value = [];
